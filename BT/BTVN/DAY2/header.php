@@ -12,6 +12,7 @@
 <body>
     <div class="container mt-3 navbar p-3" style="background-color: blueviolet;">
         <h1 class="text-light"><b>Manage Products</b></h1>
+        <h1>quang ngu</h1>
         <div class="buttons">
             <!-- Button to trigger Delete Modal -->
             <a href="#" class="btn btn-danger mx-2">
