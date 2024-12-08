@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Sửa sản phẩm</title>
-    <link rel="stylesheet" href="../../../public/assets/css/bootstrap.min.css">
+    <link rel="stylesheet"  href="http://localhost:3000/BT/BTVN/DAY3+4/public/assets/css/bootstrap.min.css">>
 </head>
 <body>
     <div class="container">
