@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\books;
+use App\Models\libraries;
+use Illuminate\Container\Attributes\DB;
 
 class booksController extends Controller
 {
@@ -12,8 +14,8 @@ class booksController extends Controller
      */
     public function index()
     {
-        $books = books::with("library")->get();
-        return view("index", compact("books"));
+        $books = books::with("library")->paginate(5);
+        return view("books.index", compact("books"));
     }
 
     /**
@@ -21,7 +23,8 @@ class booksController extends Controller
      */
     public function create()
     {
-        //
+        $libraries = libraries::all();
+        return view("books.create", compact("libraries"));
     }
 
     /**
@@ -29,7 +32,8 @@ class booksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        books::create($request->all());
+        return redirect()->route("books.index")->with("message", "Thêm mới thành công");
     }
 
     /**
@@ -37,7 +41,8 @@ class booksController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $book = books::with("library")->find($id);
+        return view("books.show", compact("book"));
     }
 
     /**
@@ -45,7 +50,9 @@ class booksController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $book = books::find($id);
+        $libraries = libraries::all();
+        return view("books.edit", compact("book", "libraries"));
     }
 
     /**
@@ -53,7 +60,9 @@ class booksController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $book = books::find($id);
+        $book->update($request->all());
+        return redirect()->route("books.index")->with("message", "Cập nhật thành công");
     }
 
     /**
@@ -61,6 +70,7 @@ class booksController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        books::destroy($id);
+        return redirect()->route("books.index")->with("message", "Xóa thành công");
     }
 }
