@@ -17,11 +17,11 @@
         <form action="{{route('posts.update',['post'=>$post])}}">
             <div class="form-group" method="post">
                 <label for="" class="form-label">Title</label>
-                <input name="title" type="text" class="form-control">
+                <input name="title" type="text" class="form-control" value="{{$post->title}}">
             </div>
             <div class="form-group">
                 <label for="" class="form-label">Content</label>
-                <input name="content" type="text" class="form-control">
+                <input name="content" type="text" class="form-control" value="{{$post->content}}">
             </div>
             <input name="submit" class="btn btn-success float-end mt-3" type="submit" value="Sửa">
         </form>
